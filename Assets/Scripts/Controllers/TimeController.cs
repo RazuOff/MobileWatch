@@ -5,7 +5,7 @@ using UnityEngine;
 public class TimeController : MonoBehaviour
 {
     [SerializeField] private float _watchSpeed = 1f;
-    [SerializeField] private APIManager apiManager;
+    [SerializeField] private APIManager _apiManager;
     private bool _isActive = true;
     public event Action<float, float, float> TimeChange;
     public float CurrentHours { get; private set; } = 0;
@@ -63,7 +63,7 @@ public class TimeController : MonoBehaviour
 
     private IEnumerator GetTime()
     {
-        yield return StartCoroutine(apiManager.FetchAndUseTimeData());
+        yield return StartCoroutine(_apiManager.FetchAndUseTimeData());
         CurrentHours = GetHours();
         CurrentMinutes = GetMinutes();
         CurrentSeconds = GetSeconds();
@@ -72,16 +72,16 @@ public class TimeController : MonoBehaviour
 
     private float GetHours()
     {
-        return float.Parse(apiManager.TimeData.hour);
+        return float.Parse(_apiManager.TimeData.hour);
     }
 
     private float GetSeconds()
     {
-        return float.Parse(apiManager.TimeData.seconds);
+        return float.Parse(_apiManager.TimeData.seconds);
     }
 
     private float GetMinutes()
     {
-        return float.Parse(apiManager.TimeData.minute);
+        return float.Parse(_apiManager.TimeData.minute);
     }
 }

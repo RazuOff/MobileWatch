@@ -329,7 +329,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _alaramController: {fileID: 130687766}
   _downloadScreen: {fileID: 692804056}
-  _uiAlarmController: {fileID: 1098078370}
 --- !u!4 &44208129
 Transform:
   m_ObjectHideFlags: 0
@@ -827,9 +826,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33eded8efef9e764288c02f1078b140b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hour: {fileID: 25558973}
-  minute: {fileID: 135233397}
-  second: {fileID: 1075007434}
+  _hour: {fileID: 25558973}
+  _minute: {fileID: 135233397}
+  _second: {fileID: 1075007434}
   _timeController: {fileID: 901464571}
   _alarmController: {fileID: 130687766}
 --- !u!1 &263086284
@@ -1936,7 +1935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _watchSpeed: 1
-  apiManager: {fileID: 1908573651}
+  _apiManager: {fileID: 1908573651}
 --- !u!4 &901464572
 Transform:
   m_ObjectHideFlags: 0
@@ -2332,7 +2331,6 @@ MonoBehaviour:
   _watchHandController: {fileID: 758139543}
   _alarmText: {fileID: 268530337}
   _alarmController: {fileID: 130687766}
-  madeChoice: 0
 --- !u!4 &1098078371
 Transform:
   m_ObjectHideFlags: 0
@@ -3500,7 +3498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e7927244ac5ca4f9682432f2203ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  apiControllers:
+  _apiControllers:
   - {fileID: 1908573652}
   - {fileID: 1908573650}
 --- !u!114 &1908573652

@@ -6,7 +6,7 @@ public class NinjaAPI : APIController
 
     private void Awake()
     {
-        url = URL;
+        _url = URL;
     }
 }
 

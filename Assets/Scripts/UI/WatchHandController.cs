@@ -5,7 +5,7 @@ public class WatchHandController : MonoBehaviour
 {
 	[SerializeField] private LayerMask _arrowLayer;
 	private Transform _selectedArrow;
-	private Vector3 touchPos;
+	private Vector3 _touchPos;
 	public event Action AnalogWatchChanged;
 
 
@@ -19,14 +19,14 @@ public class WatchHandController : MonoBehaviour
 		if (Input.touchCount > 0)
 		{
 			Touch touch = Input.touches[0];
-			touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+			_touchPos = Camera.main.ScreenToWorldPoint(touch.position);
 			switch (touch.phase)
 			{
 				case TouchPhase.Began:
-					CheckTouchedArrow(touchPos);
+					CheckTouchedArrow(_touchPos);
 					break;
 				case TouchPhase.Moved:
-					MoveArrow(touchPos);
+					MoveArrow(_touchPos);
 					break;
 				case TouchPhase.Ended:
 					EndTouch();

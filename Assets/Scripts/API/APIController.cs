@@ -4,12 +4,12 @@ using UnityEngine.Networking;
 
 public abstract class APIController : MonoBehaviour
 {
-    protected string url;
     private TimeData _timeData;
+    protected string _url;
 
     public IEnumerator GetWorldTime()
     {
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(_url))
         {
             yield return webRequest.SendWebRequest();
 

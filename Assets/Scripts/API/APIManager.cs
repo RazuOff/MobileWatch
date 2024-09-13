@@ -6,13 +6,13 @@ using UnityEngine;
 
 public class APIManager : MonoBehaviour
 {
-    [SerializeField] private List<APIController> apiControllers;
-
+    [SerializeField] private List<APIController> _apiControllers;
     public TimeData TimeData { get; private set; }
+
 
     public IEnumerator FetchAndUseTimeData()
     {
-        foreach (var api in apiControllers)
+        foreach (var api in _apiControllers)
         {
             yield return StartCoroutine(api.GetWorldTime());
             if (api.GetCurrentTimeData() != null)

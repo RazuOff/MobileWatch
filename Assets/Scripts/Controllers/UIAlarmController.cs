@@ -13,7 +13,7 @@ public class UIAlarmController : MonoBehaviour
 	[SerializeField] private TMP_Text _alarmText;
 	[SerializeField] private AlarmController _alarmController;
 	private bool _analogChanged = false;
-	public bool madeChoice = false;
+	private bool _madeChoice = false;
 	public event Action<float, float, float> CreateAlarm, AnalogAlarmChanged, DigitalAlarmChanged;
 
 
@@ -43,7 +43,7 @@ public class UIAlarmController : MonoBehaviour
 
 	private void OnDigitalWatchChange(string text)
 	{
-		if (madeChoice && text != "")
+		if (_madeChoice && text != "")
 		{
 			if (!_analogChanged)
 			{
@@ -58,7 +58,7 @@ public class UIAlarmController : MonoBehaviour
 
 	private void OnAnalogWatchChanged()
 	{
-		if (madeChoice)
+		if (_madeChoice)
 		{
 			float hours = (360 - NormalizeAngle(_hoursArrow.rotation.eulerAngles.z)) * (12f / 360f);
 			float minutes = (360 - NormalizeAngle(_minutesArrow.rotation.eulerAngles.z)) * (60f / 360f);
@@ -81,7 +81,7 @@ public class UIAlarmController : MonoBehaviour
 
 	private void BlockButtonOnEmpty(string text)
 	{
-		if (madeChoice)
+		if (_madeChoice)
 		{
 			if (text == "")
 			{
@@ -94,7 +94,7 @@ public class UIAlarmController : MonoBehaviour
 
 	public void SetAlarm()
 	{
-		if (!madeChoice)
+		if (!_madeChoice)
 		{
 			ActiveAlarmChoice();
 		}
@@ -110,7 +110,7 @@ public class UIAlarmController : MonoBehaviour
 		_hours.interactable = false;
 		_minutes.interactable = false;
 		_seconds.interactable = false;
-		madeChoice = false;
+		_madeChoice = false;
 		_alarmText.text = float.Parse(_hours.text).ToString("00") + " : " + float.Parse(_minutes.text).ToString("00")
 			+ " : " + float.Parse(_seconds.text).ToString("00");
 		CreateAlarm?.Invoke(float.Parse(_hours.text), float.Parse(_minutes.text), float.Parse(_seconds.text));
@@ -122,7 +122,7 @@ public class UIAlarmController : MonoBehaviour
 		_hours.interactable = true;
 		_minutes.interactable = true;
 		_seconds.interactable = true;
-		madeChoice = true;
+		_madeChoice = true;
 	}
 
 	private float NormalizeAngle(float angle)

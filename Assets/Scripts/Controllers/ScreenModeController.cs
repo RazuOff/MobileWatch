@@ -8,7 +8,7 @@ public class ScreenModeController : MonoBehaviour
     [SerializeField] GameObject _downloadScreen;
     private const string HOURS_PREFS = "Hours", MINUTES_PREFS = "Minutes", SECONDS_PREFS = "Seconds", ACTIVE_PREFS = "isActive", START_PREF = "Start";
     private const int LANDSCAPE_SCENE = 1, PORTRAIT_SCENE = 0;
-    private ScreenOrientation lastOrientation;
+    private ScreenOrientation _lastOrientation;
 
 
     private void OnEnable()
@@ -27,13 +27,13 @@ public class ScreenModeController : MonoBehaviour
             StartScene();
         }
         StartCoroutine(LoadAlarm());
-        lastOrientation = Screen.orientation;
+        _lastOrientation = Screen.orientation;
 
     }
 
     private void Update()
     {
-        if (lastOrientation != Screen.orientation)
+        if (_lastOrientation != Screen.orientation)
         {
             ChangeScene();
         }
