@@ -6,6 +6,9 @@ public class NinjaAPI : APIController
 
     private void Awake()
     {
+        _keyName="X-Api-Key";
+        _useKey = true;
+        _key = "PfJeVrWvpHOIgCGOnPzQdw==AJ3G6SWv94nCEoXy";
         _url = URL;
     }
 }
